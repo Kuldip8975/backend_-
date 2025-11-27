@@ -1,15 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import dbConnect from "../config/database.js";
-import router from "../routes/FeedbackRoutes.js";
+import dbConnect from "./config/database.js";
+import router from "./routes/FeedbackRoutes.js";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// CORS for React frontend
+// CORS allow for frontend
 app.use(cors({
   origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -17,12 +17,13 @@ app.use(cors({
 
 app.use(express.json());
 
-// Main API Path
+// API routes
 app.use("/api/v1", router);
 
-// Connect MongoDB
+// Database connect
 dbConnect();
 
+// Test route
 app.get("/", (req, res) => {
   res.json({
     success: true,
@@ -31,5 +32,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Backend running on PORT:", PORT);
+  console.log(`Server running on PORT ${PORT}`);
 });

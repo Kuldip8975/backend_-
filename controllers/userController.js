@@ -1,6 +1,5 @@
 import User from "../models/User.js";
 
-// SUCCESS RESPONSE
 const success = (res, data, message) => {
   return res.status(200).json({
     success: true,
@@ -9,7 +8,6 @@ const success = (res, data, message) => {
   });
 };
 
-// ERROR RESPONSE
 const failure = (res, error) => {
   return res.status(500).json({
     success: false,
@@ -29,8 +27,8 @@ export const createAdmin = async (req, res) => {
       role: "Admin"
     });
 
-    const savedUser = await user.save();
-    return success(res, savedUser, "Admin created");
+    const saved = await user.save();
+    return success(res, saved, "Admin created successfully");
 
   } catch (error) {
     console.log(error);
@@ -50,8 +48,8 @@ export const createAlumni = async (req, res) => {
       role: "Alumni"
     });
 
-    const savedUser = await user.save();
-    return success(res, savedUser, "Alumni created");
+    const saved = await user.save();
+    return success(res, saved, "Alumni created successfully");
 
   } catch (error) {
     console.log(error);
@@ -71,8 +69,8 @@ export const createStudent = async (req, res) => {
       role: "Student"
     });
 
-    const savedUser = await user.save();
-    return success(res, savedUser, "Student created");
+    const saved = await user.save();
+    return success(res, saved, "Student created successfully");
 
   } catch (error) {
     console.log(error);
@@ -114,7 +112,6 @@ export const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
     return success(res, users, "Users fetched successfully");
-
   } catch (error) {
     console.log(error);
     return failure(res, error);
