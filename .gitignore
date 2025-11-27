@@ -1,0 +1,6 @@
+# Don't track node_modules (installed packages)
+node_modules/
+# Don't track environment files (secrets, keys)
+.env
+# Optional: VSCode settings
+.vscode/
