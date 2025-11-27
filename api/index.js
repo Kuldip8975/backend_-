@@ -9,25 +9,21 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// CORS allow for frontend
 app.use(cors({
   origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE"]
 }));
 
 app.use(express.json());
 
-// API routes
 app.use("/api/v1", router);
 
-// Database connect
 dbConnect();
 
-// Test route
 app.get("/", (req, res) => {
   res.json({
     success: true,
-    message: "Backend running on Render"
+    message: "Backend running locally"
   });
 });
 
